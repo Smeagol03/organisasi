@@ -1,19 +1,18 @@
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react';
+/**
+ * App Component
+ * Main application component with routing
+ */
+
+import { AppRoutes } from '@/routes/AppRoutes'
+import { Toaster } from '@/components/ui/sonner'
 
 function App() {
   return (
-    <header>
-      {/* Show the sign-in and sign-up buttons when the user is signed out */}
-      <SignedOut>
-        <SignInButton />
-        <SignUpButton />
-      </SignedOut>
-      {/* Show the user button when the user is signed in */}
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </header>
-  );
+    <>
+      <AppRoutes />
+      <Toaster position="top-right" richColors />
+    </>
+  )
 }
 
 export default App
