@@ -1,0 +1,1 @@
+// SectionHeading component
