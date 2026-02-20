@@ -5,14 +5,14 @@
 
 export const siteConfig = {
   // Basic site info
-  name: 'Organization Website',
+  name: 'Alpiant.',
   description: 'Official website of our organization - connecting members, sharing news, and building community.',
   url: 'https://your-domain.com',
   
   // Organization info
   organization: {
-    name: 'Your Organization Name',
-    shortName: 'YourOrg',
+    name: 'Alpiant.',
+    shortName: 'alpiant.',
     description: 'A brief description of your organization.',
     founded: '2020',
     email: 'contact@yourorg.com',

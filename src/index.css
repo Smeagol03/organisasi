@@ -117,6 +117,21 @@
     --sidebar-ring: 224.3 76.3% 48%;
 }
 
+@layer utilities {
+  .animate-gradient-x {
+    animation: gradient-x 8s ease infinite;
+  }
+  
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -125,7 +140,6 @@
     @apply bg-background text-foreground overflow-x-hidden;
   }
   
-  /* Container utility */
   .container {
     @apply mx-auto w-full max-w-[1400px] px-4 md:px-6 lg:px-8;
   }
