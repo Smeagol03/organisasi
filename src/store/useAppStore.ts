@@ -33,7 +33,7 @@ export const useAppStore = create<AppState>((set) => ({
   setTheme: (theme) => set({ theme }),
   
   // Sidebar
-  isSidebarOpen: true,
+  isSidebarOpen: false,
   setIsSidebarOpen: (open) => set({ isSidebarOpen: open }),
   
   // Loading

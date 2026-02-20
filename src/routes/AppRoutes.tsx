@@ -46,8 +46,8 @@ export const AppRoutes = () => {
       <Route path="/members" element={<MembersPage />} />
       <Route path="/gallery" element={<GalleryPage />} />
       <Route path="/contact" element={<ContactPage />} />
-      <Route path="/sign-in" element={<SignInPage />} />
-      <Route path="/sign-up" element={<SignUpPage />} />
+      <Route path="/sign-in/*" element={<SignInPage />} />
+      <Route path="/sign-up/*" element={<SignUpPage />} />
 
       {/* Admin Routes - Protected */}
       <Route element={<ProtectedRoute />}>

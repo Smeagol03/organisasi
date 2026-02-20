@@ -6,26 +6,16 @@ import { NavLink } from 'react-router-dom'
 import { useAppStore } from '@/store/useAppStore'
 import { adminNav } from '@/config/navigation'
 import { cn } from '@/lib/utils'
-import { X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTitle, SheetDescription } from '@/components/ui/sheet'
 
 export const AdminSidebar = () => {
   const { isSidebarOpen, setIsSidebarOpen } = useAppStore()
 
-  const SidebarContent = () => (
+  const SidebarContent = ({ onLinkClick }: { onLinkClick?: () => void }) => (
     <div className="flex h-full flex-col gap-2 py-4">
       {/* Logo/Title */}
-      <div className="flex items-center justify-between px-4 py-2">
+      <div className="px-4 py-2">
         <h2 className="text-lg font-semibold">Admin Panel</h2>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setIsSidebarOpen(false)}
-        >
-          <X className="h-4 w-4" />
-        </Button>
       </div>
 
       {/* Navigation */}
@@ -35,6 +25,7 @@ export const AdminSidebar = () => {
             <NavLink
               key={item.href}
               to={item.href}
+              onClick={onLinkClick}
               className={({ isActive }) =>
                 cn(
                   'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
@@ -55,20 +46,17 @@ export const AdminSidebar = () => {
 
   return (
     <>
-      {/* Desktop sidebar */}
-      <aside
-        className={cn(
-          'fixed left-0 top-0 z-40 h-screen w-64 border-r bg-background transition-transform duration-300 md:translate-x-0',
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        )}
-      >
+      {/* Desktop sidebar - always visible */}
+      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-64 border-r bg-background md:block">
         <SidebarContent />
       </aside>
 
-      {/* Mobile sidebar */}
+      {/* Mobile sidebar - toggle with state */}
       <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
-        <SheetContent side="left" className="w-64 p-0 md:hidden">
-          <SidebarContent />
+        <SheetContent side="left" className="w-64 p-0 md:hidden" showCloseButton={false}>
+          <SheetTitle className="sr-only">Admin Navigation Menu</SheetTitle>
+          <SheetDescription className="sr-only">Navigate to different admin pages</SheetDescription>
+          <SidebarContent onLinkClick={() => setIsSidebarOpen(false)} />
         </SheetContent>
       </Sheet>
     </>
